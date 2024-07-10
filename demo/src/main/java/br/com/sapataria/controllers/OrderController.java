@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/orders")
@@ -36,5 +37,10 @@ public class OrderController {
         }
     }
 
+    @GetMapping("/order-number/{orderNumber}")
+    public ResponseEntity<Order> getOrderBy (@PathVariable String orderNumber){
+        Optional<Order> order = orderService.findOrderBy(orderNumber);
+        return order.isPresent() ? ResponseEntity.ok(order.get()) : ResponseEntity.notFound().build();
+    }
 
 }
