@@ -1,5 +1,6 @@
 package br.com.sapataria.entity.orders;
 
+import br.com.sapataria.entity.Client;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -18,5 +19,6 @@ public class Order {
     private boolean itsPaid;
     private BigDecimal totalPrice;
     private OrderType orderType;
+    private Client client;
 
 }
