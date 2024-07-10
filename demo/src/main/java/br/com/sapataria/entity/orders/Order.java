@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class Order {
 
     @Id
-    private int orderNumber;
+    private String orderNumber;
     private OrderStatus orderStatus;
     private boolean itsPaid;
     private BigDecimal totalPrice;
