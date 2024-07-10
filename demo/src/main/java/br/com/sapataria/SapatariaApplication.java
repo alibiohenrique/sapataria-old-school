@@ -1,4 +1,4 @@
-package br.com.sapataria.demo;
+package br.com.sapataria;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
