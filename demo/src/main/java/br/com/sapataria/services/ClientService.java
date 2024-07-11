@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -27,5 +28,11 @@ public class ClientService {
 
         }
     }
-    
+     public Optional<Client> findById(String id) {
+        if (clientRepository.findById(id).isEmpty()) {
+            return null;
+        } else {
+            return clientRepository.findById(id);
+        }
+    }
 }

@@ -34,12 +34,22 @@ public class ClientController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Client>> getAll(){
-        if(clientService.findAll().isEmpty()) {
+    public ResponseEntity<List<Client>> getAll() {
+        if (clientService.findAll().isEmpty()) {
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.ok(clientService.findAll());
         }
     }
+
+    @GetMapping("id/{id}")
+    public ResponseEntity<Optional<Client>> getClientById(@PathVariable String id) {
+        if (clientService.findById(id).isPresent()) {
+            return ResponseEntity.ok(clientService.findById(id));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
 }
