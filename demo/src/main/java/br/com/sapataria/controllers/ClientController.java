@@ -60,6 +60,15 @@ public class ClientController {
         }
     }
 
+    @GetMapping("/phone-number/{phoneNumber}")
+    public ResponseEntity<Optional<Client>> getClientByPhone(@PathVariable String phoneNumber) {
+        if(clientService.findByPhoneNumber(phoneNumber).isPresent()) {
+            return ResponseEntity.ok(clientService.findByPhoneNumber(phoneNumber));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping("/delete-client/{id}")
     public ResponseEntity<Void> deleteClient(@PathVariable String id) {
         boolean isDeleted = clientService.deleteById(id);

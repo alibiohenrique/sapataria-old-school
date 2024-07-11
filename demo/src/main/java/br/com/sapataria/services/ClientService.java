@@ -45,6 +45,14 @@ public class ClientService {
         }
     }
 
+    public Optional<Client> findByPhoneNumber(String phone) {
+        if (clientRepository.findByPhoneNumber(phone) != null) {
+            return Optional.of(clientRepository.findByPhoneNumber(phone));
+        } else {
+            return Optional.empty();
+        }
+    }
+
     public boolean deleteById(String id) {
         if (clientRepository.existsById(id)) {
             clientRepository.deleteById(id);
