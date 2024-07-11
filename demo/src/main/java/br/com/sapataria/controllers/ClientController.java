@@ -62,7 +62,7 @@ public class ClientController {
 
     @GetMapping("/phone-number/{phoneNumber}")
     public ResponseEntity<Optional<Client>> getClientByPhone(@PathVariable String phoneNumber) {
-        if(clientService.findByPhoneNumber(phoneNumber).isPresent()) {
+        if (clientService.findByPhoneNumber(phoneNumber).isPresent()) {
             return ResponseEntity.ok(clientService.findByPhoneNumber(phoneNumber));
         } else {
             return ResponseEntity.notFound().build();
@@ -87,6 +87,19 @@ public class ClientController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } else {
             return ResponseEntity.noContent().build();
+        }
+
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Client> updateClient(@PathVariable String id, @RequestBody Client updatedClient) {
+        updatedClient.setId(id);
+        Optional<Client> clientOptional = clientService.findById(id);
+        if (clientOptional.isPresent()) 
+            clientService.updateClient(updatedClient);
+            return ResponseEntity.ok(updatedClient);
+        } else {
+            return ResponseEntity.notFound().build();
         }
 
     }

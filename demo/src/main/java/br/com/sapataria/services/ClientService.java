@@ -3,6 +3,8 @@ package br.com.sapataria.services;
 import br.com.sapataria.entity.Client;
 import br.com.sapataria.repositories.ClientRepository;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ClientService {
 
+    private static final Logger log = LoggerFactory.getLogger(ClientService.class);
     private final ClientRepository clientRepository;
 
     public void save(Client client) {
@@ -68,6 +71,14 @@ public class ClientService {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void updateClient(Client client) {
+        if (clientRepository.existsById(client.getId())) {
+            clientRepository.save(client);
+        } else {
+            log.error("Client not found!");
         }
     }
 }
