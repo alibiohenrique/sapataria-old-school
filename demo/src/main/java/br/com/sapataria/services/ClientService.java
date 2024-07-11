@@ -53,4 +53,13 @@ public class ClientService {
             return false;
         }
     }
+
+    public boolean deleteByEmail(String email) {
+        if (clientRepository.existsByEmail(email)) {
+            clientRepository.deleteByEmail(email);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

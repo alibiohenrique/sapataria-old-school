@@ -70,4 +70,15 @@ public class ClientController {
         }
 
     }
+
+    @DeleteMapping("/delete-client/email/{email}")
+    public ResponseEntity<Void> deleteClientByEmail(@PathVariable String email) {
+        boolean isDeleted = clientService.deleteByEmail(email);
+        if (!(isDeleted)) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+
+    }
 }
