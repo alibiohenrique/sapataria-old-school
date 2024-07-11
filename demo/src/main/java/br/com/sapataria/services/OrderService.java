@@ -4,6 +4,8 @@ import br.com.sapataria.entity.orders.Order;
 import br.com.sapataria.entity.orders.OrderStatus;
 import br.com.sapataria.repositories.OrderRepository;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class OrderService {
 
+    private static final Logger log = LoggerFactory.getLogger(OrderService.class);
     private final OrderRepository orderRepository;
 
     public void save(Order order) {
@@ -31,6 +34,15 @@ public class OrderService {
         Order order = orderRepository.findById(orderNumber).get();
         order.setOrderStatus(orderStatus);
         orderRepository.save(order);
+    }
+
+    public void deleteOrder(String orderNumber) {
+        if(orderRepository.existsById(orderNumber)) {
+            orderRepository.deleteById(orderNumber);
+        } else {
+            log.error("Order not found");
+        }
+
     }
 
 }

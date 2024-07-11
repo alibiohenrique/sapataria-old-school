@@ -16,6 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Slf4j
 public class OrderController {
+
     private OrderService orderService;
 
     @PostMapping("/create")
@@ -48,6 +49,16 @@ public class OrderController {
     public ResponseEntity<Void> changeOrderStatus(@PathVariable String orderNumber, @RequestBody OrderStatus orderStatus) {
         if (orderService.findOrderBy(orderNumber).isPresent()) {
             orderService.changeOrderStatus(orderNumber, orderStatus);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/delete/{orderNumber}")
+    public ResponseEntity<Void> delete(@PathVariable String orderNumber) {
+        if (orderService.findOrderBy(orderNumber).isPresent()) {
+            orderService.deleteOrder(orderNumber);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
