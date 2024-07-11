@@ -28,11 +28,20 @@ public class ClientService {
 
         }
     }
-     public Optional<Client> findById(String id) {
+
+    public Optional<Client> findById(String id) {
         if (clientRepository.findById(id).isEmpty()) {
             return null;
         } else {
             return clientRepository.findById(id);
+        }
+    }
+
+    public Optional<Client> findByEmail(String email) {
+        if (clientRepository.findByEmail(email) != null) {
+            return Optional.of(clientRepository.findByEmail(email));
+        } else {
+            return Optional.empty();
         }
     }
 }

@@ -51,5 +51,14 @@ public class ClientController {
         }
     }
 
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Optional<Client>> getClientByEmail(@PathVariable String email) {
+        if (clientService.findByEmail(email).isPresent()) {
+            return ResponseEntity.ok(clientService.findByEmail(email));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
 }
