@@ -60,5 +60,14 @@ public class ClientController {
         }
     }
 
+    @DeleteMapping("/delete-client/{id}")
+    public ResponseEntity<Void> deleteClient(@PathVariable String id) {
+        boolean isDeleted = clientService.deleteById(id);
+        if (!(isDeleted)) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } else {
+            return ResponseEntity.noContent().build();
+        }
 
+    }
 }

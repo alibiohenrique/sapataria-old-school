@@ -31,7 +31,7 @@ public class ClientService {
 
     public Optional<Client> findById(String id) {
         if (clientRepository.findById(id).isEmpty()) {
-            return null;
+            return Optional.empty();
         } else {
             return clientRepository.findById(id);
         }
@@ -42,6 +42,15 @@ public class ClientService {
             return Optional.of(clientRepository.findByEmail(email));
         } else {
             return Optional.empty();
+        }
+    }
+
+    public boolean deleteById(String id) {
+        if (clientRepository.existsById(id)) {
+            clientRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
         }
     }
 }
