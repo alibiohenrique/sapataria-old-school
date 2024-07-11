@@ -1,6 +1,7 @@
 package br.com.sapataria.services;
 
 import br.com.sapataria.entity.orders.Order;
+import br.com.sapataria.entity.orders.OrderStatus;
 import br.com.sapataria.repositories.OrderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,12 @@ public class OrderService {
 
     public Optional<Order> findOrderBy(String orderNumber) {
         return orderRepository.findById(orderNumber);
+    }
+
+    public void changeOrderStatus(String orderNumber, OrderStatus orderStatus) {
+        Order order = orderRepository.findById(orderNumber).get();
+        order.setOrderStatus(orderStatus);
+        orderRepository.save(order);
     }
 
 }
