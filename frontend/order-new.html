@@ -26,20 +26,21 @@
 
 <body class="is-preload">
 
-  <!-- Wrapper -->
+  <!-- WRAPPER -->
   <div id="wrapper">
 
-    <!-- Main -->
+    <!-- MAIN -->
     <div id="main">
       <div class="inner">
 
-        <!-- Header -->
+        <!-- HEADER -->
         <header id="header">
           <div class="logo">
             <a href="index.html">Cadastrar pedido</a>
           </div>
         </header>
-        <!-- Forms -->
+    
+        <!-- NEW ORDER FORM -->
         <section class="forms">
           <div class="container-fluid">
             <div class="row">
@@ -55,16 +56,20 @@
                           placeholder="Digite o nome do cliente, e-mail ou telefone..." required="true">
                       </fieldset>
 
+                      <!-- NEW CLIENT QUERY -->
                     </div>
                     <div class="col-md-6">
                       <div class="d-grid mx-auto md">
                         <div class="border-radius-button">
-                          <a href="#" onclick="checkClient()" class="btn btn-outline-primary">Checar Cliente</a>
-                          <p><a href="client-new.html" class="card-link">Cadastrar Cliente</a></p>
+                          <a href="#" onclick="checkClient()" class="btn btn-outline-primary col-md-4">Pesquisar
+                            Cliente</a>
+                          <a href="client-new.html" class="btn btn-outline-primary col-md-4" id="new-client-link">Criar
+                            Cliente</a>
                         </div>
                       </div>
                     </div>
 
+                      <!-- NEW ORDER  -->
                     <div class="col-md-6">
                       <label class="form-label">Tipo de reparo</label>
                       <input class="form-control" list="datalistOptions" id="order-type"
@@ -86,7 +91,8 @@
 
                     <div class="col-md-6">
                       <label for="" class="form-label">Preço do serviço</label>
-                      <input type="number" class="form-control" placeholder="Digite o total do conserto" id="order-value">
+                      <input type="number" class="form-control" placeholder="Digite o total do conserto"
+                        id="order-value">
                     </div>
                     <div class="col-6">
                       <label for="" class="form-label">Já pagou o sinal?</label>
@@ -98,28 +104,31 @@
                     <div class="col-md-12">
                       <label for="" class="form-label">Valor pago</label>
                       <input type="number" class="form-control" placeholder="Valor pago" id="order-value-paid">
-                    <div class="col-12">
-                      <label for="" class="form-label"></label>
+                      <div class="col-12">
+                        <label for="" class="form-label"></label>
 
-                      <div class="input-group mb-3 justify-content-center mx-auto ">
-                        <input type="text" class="form-control col-md-6" placeholder="Adicionar item do conserto"
-                          id="items-names">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
-                          onclick="newOrder()">Adicionar</button>
+                        <div class="input-group mb-3 justify-content-center mx-auto ">
+                          <input type="text" class="form-control col-md-6" placeholder="Adicionar item do conserto"
+                            id="items-names">
+                          <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                            onclick="newOrder()">Adicionar</button>
+                        </div>
                       </div>
 
-                    </div>
-                    <div class="col-md-12" id="items">
-
-                    </div>
-
-                    <div class="col-md-3 text-center justify-content-center mx-auto">
-                      <div class="border-radius-button">
-                        <a href="#" onclick="createOrder()">Enviar pedido</a>
+                      <!-- ORDER ITEMS -->
+                      <div class="col-md-12" id="items">
                       </div>
+
+                      <!-- SEND ORDER -->
+                      <div class="col-md-3 text-center justify-content-center mx-auto">
+                        <div class="border-radius-button">
+                          <a href="#" onclick="createOrder()">Enviar pedido</a>
+                        </div>
+                      </div>
+
+                      <!-- ALL ORDERS -->
+                      <a href="orders.html">Todos os pedidos</a>
                     </div>
-                       <a href="orders.html">Todos os pedidos</a>
-                  </div>
                 </form>
 
               </div>
@@ -128,6 +137,11 @@
         </section>
 
       </div>
+    </div>
+
+    <!--  Messages -->
+
+    <div class="user-message-container" id="user-message-container">
     </div>
 
     <!-- Sidebar -->
@@ -182,6 +196,7 @@
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/new-order.js"></script>
   <script src="assets/js/check-user.js"></script>
+  <script src="assets/js/messages.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/transition.js"></script>
   <script src="assets/js/owl-carousel.js"></script>

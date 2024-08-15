@@ -3,148 +3,153 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
-  <title>Prates | Cadastrar Cliente</title>
+    <title>Prates | Cadastrar Cliente</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!--
-Ramayana CSS Template
-https://templatemo.com/tm-529-ramayana
--->
-
-  <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/templatemo-style.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
 
 </head>
 
 <body class="is-preload">
 
-  <!-- Wrapper -->
-  <div id="wrapper">
+    <!-- WRAPPER -->
+    <div id="wrapper">
 
-    <!-- Main -->
-    <div id="main">
-      <div class="inner">
+        <!-- MAIN -->
+        <div id="main">
+            <div class="inner">
 
-        <!-- Header -->
-        <header id="header">
-          <div class="logo">
-            <a href="index.html">Cadastrar Cliente</a>
-          </div>
-        </header>
+                <!-- HEADER -->
+                <header id="header">
+                    <div class="logo">
+                        <a href="index.html">Cadastrar Cliente</a>
+                    </div>
+                </header>
 
-        <!-- Forms -->
-        <section class="forms" action="" method="post">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="section-heading">
-                  <h2>Cadastrar cliente</h2>
-                </div>
-                <form id="contact">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <fieldset>
-                        <input name="name" type="text" class="form-control" id="name" placeholder="Digite o nome"
-                          required="">
-                      </fieldset>
-                    </div>
-                    <div class="col-md-6">
-                      <fieldset>
-                        <input name="email" type="text" class="form-control" id="phone-number" placeholder="Telefone"
-                          required="">
-                      </fieldset>
-                    </div>
-                    <div class="col-md-12">
-                      <fieldset>
-                        <input name="email" type="text" class="form-control" id="address" placeholder="Endereço"
-                          required="">
-                      </fieldset>
-                    </div>
-                    <div class="col-md-12">
-                      <fieldset>
-                        <input name="email" type="text" class="form-control" id="email" placeholder="nome@email.com"
-                          required="">
-                      </fieldset>
-                    </div>
-                    <div class="col-md-12">
-                      <button class="btn btn-primary" type="button" onclick="createClient()">Enviar</button>
-                    </div>
+                <!-- NEW CLIENT FORM -->
+                <section class="forms" action="" method="post">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="section-heading">
+                                    <h2>Cadastrar cliente</h2>
+                                </div>
+                                <form id="contact">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <input name="name" type="text" class="form-control" id="name"
+                                                    placeholder="Digite o nome" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <input name="email" type="text" class="form-control" id="phone-number"
+                                                    placeholder="Telefone" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <fieldset>
+                                                <input name="email" type="text" class="form-control" id="address"
+                                                    placeholder="Endereço" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <fieldset>
+                                                <input name="email" type="text" class="form-control" id="email"
+                                                    placeholder="nome@email.com" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button class="btn btn-primary" type="button"
+                                                onclick="createClient()">Enviar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="section-footer">
+                                        <a href="orders.html" class="card-link">Visualizar Pedidos</a>
+                                    </div>
+                                </form>
+                            </div>
 
-                </form>
-              </div>
-              <div class="section-footer">
-                <a href="orders.html" class="card-link">Visualizar Pedidos</a>
-              </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-          </div>
-        </section>
-      </div>
+        </div>
+
+        <!--  MESSAGES -->
+        <div class="user-message-container" id="user-message-container">
+        </div>
+
+        <!-- SIDEBAR -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- SEARCH BOX -->
+                <section id="search" class="alt">
+                    <form method="get" action="#">
+                        <input type="text" name="search" id="search" placeholder="Procurar..." />
+                    </form>
+                </section>
+
+                <!-- MENU -->
+                <nav id="menu">
+                    <ul>
+                        <li><a href="index.html">Página inicial</a></li>
+                        <li><a href="client-new.html">Cadastrar cliente</a></li>
+                        <li><a href="order-new.html">Cadastrar Pedido</a></li>
+                        <li>
+                            <span class="opener">Visualizar clientes</span>
+                            <ul>
+                                <li><a href="clients.html">Todos os clientes</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">Visualizar pedidos</span>
+                            <ul>
+                                <li><a href="orders.html">Todos os pedidos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- FOOTER -->
+                <footer id="footer">
+                    <p class="copyright">Copyright &copy; 2024 Sapataria Prates
+                    </p>
+                </footer>
+
+            </div>
+        </div>
+
+        <div class="user-message-container" id="user-message-container">
+        </div>
     </div>
 
-    <!-- Sidebar -->
-    <div id="sidebar">
 
-      <div class="inner">
-
-        <!-- Search Box -->
-        <section id="search" class="alt">
-          <form method="get" action="#">
-            <input type="text" name="search" id="search" placeholder="Procurar..." />
-          </form>
-        </section>
-
-        <!-- Menu -->
-        <nav id="menu">
-          <ul>
-            <li><a href="index.html">Página inicial</a></li>
-            <li><a href="client-new">Cadastrar cliente</a></li>
-            <li><a href="order-new.html">Cadastrar Pedido</a></li>
-            <li>
-              <span class="opener">Visualizar clientes</span>
-              <ul>
-                <li><a href="clients.html">Todos os clientes</a></li>
-              </ul>
-            </li>
-            <li>
-              <span class="opener">Visualizar pedidos</span>
-              <ul>
-                <li><a href="orders.html">Todos os pedidos</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-
-        <!-- Footer -->
-        <footer id="footer">
-          <p class="copyright">Copyright &copy; 2024 Sapataria Prates
-          </p>
-        </footer>
-
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/new-client.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/transition.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/custom.js"></script>
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/new-client.js"></script>
+    <script src="assets/js/messages.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/transition.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/custom.js"></script>
 </body>
 
 
