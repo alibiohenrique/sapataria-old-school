@@ -25,7 +25,6 @@ public class OrderService {
         long orderNumberSequence = counterService.getNextSequence();
         String orderNumber = "A" + orderNumberSequence;
         order.setOrderNumber(orderNumber);
-        log.info("Generated order number: " + orderNumber);
         orderRepository.save(order);
     }
 

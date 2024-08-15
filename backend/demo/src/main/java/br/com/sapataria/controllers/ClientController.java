@@ -50,18 +50,17 @@ public class ClientController {
 
         Optional<Client> client = Optional.empty();
 
-       if (query.contains("@")) {
+        if (query.contains("@")) {
             client = clientService.findByEmail(query);
-           System.out.println(client.isPresent());
+            System.out.println(client.isPresent());
 
         } else if (query.length() == 11 && query.charAt(2) == '9') {
             client = clientService.findByPhoneNumber(query);
-           System.out.println(client.isPresent());
 
         } else if (query != null) {
 
             client = clientService.findByName(query);
-           System.out.println(client.isPresent());
+            System.out.println(client.isPresent());
 
         }
         return client.isPresent() ? ResponseEntity.ok(client) : ResponseEntity.noContent().build();
@@ -85,7 +84,6 @@ public class ClientController {
         }
     }
 
-
     @GetMapping("/phone-number/{phoneNumber}")
     public ResponseEntity<Optional<Client>> getClientByPhone(@PathVariable String phoneNumber) {
         if (clientService.findByPhoneNumber(phoneNumber).isPresent()) {
@@ -103,7 +101,6 @@ public class ClientController {
         } else {
             return ResponseEntity.noContent().build();
         }
-
     }
 
     @DeleteMapping("/delete-client/email/{email}")

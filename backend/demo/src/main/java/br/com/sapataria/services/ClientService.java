@@ -17,11 +17,7 @@ public class ClientService {
     private static final Logger log = LoggerFactory.getLogger(ClientService.class);
     private final ClientRepository clientRepository;
 
-    public void save(Client client) {
-
-        clientRepository.save(client);
-
-    }
+    public void save(Client client) {clientRepository.save(client);}
 
     public List<Client> findAll() {
         if (clientRepository.findAll().isEmpty()) {
@@ -36,17 +32,11 @@ public class ClientService {
         return clientRepository.findById(id);
     }
 
-    public Optional<Client> findByName(String name) {
-        return Optional.ofNullable(clientRepository.findByName(name));
-    }
+    public Optional<Client> findByName(String name) {return Optional.ofNullable(clientRepository.findByName(name));}
 
-    public Optional<Client> findByEmail(String email) {
-        return Optional.ofNullable(clientRepository.findByEmail(email));
-    }
+    public Optional<Client> findByEmail(String email) {return Optional.ofNullable(clientRepository.findByEmail(email));}
 
-    public Optional<Client> findByPhoneNumber(String phone) {
-        return Optional.ofNullable(clientRepository.findByPhoneNumber(phone));
-    }
+    public Optional<Client> findByPhoneNumber(String phone) {return Optional.ofNullable(clientRepository.findByPhoneNumber(phone));}
 
     public boolean deleteById(String id) {
         if (clientRepository.existsById(id)) {

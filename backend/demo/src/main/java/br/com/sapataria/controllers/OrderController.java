@@ -29,45 +29,46 @@ public class OrderController {
     public ResponseEntity<Order> create(@RequestBody Order order) {
 
         try {
+
+            if (order.getClient() == null) {
+                log.error("Client information is mission from the order");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
+
+            Optional<Client> optionalClient = Optional.empty();
+
+            if (order.getClient().getEmail() != null) {
+                optionalClient = clientService.findByEmail(order.getClient().getEmail());
+            }
+            if (!optionalClient.isPresent() && order.getClient().getName() != null) {
+                optionalClient = clientService.findByName(order.getClient().getName());
+            }
+            if (!optionalClient.isPresent() && order.getClient().getPhoneNumber() != null) {
+                optionalClient = clientService.findByPhoneNumber(order.getClient().getPhoneNumber());
+            }
+
+            if (optionalClient.isPresent()) {
+                Client existingClient = optionalClient.get();
+                order.setClient(existingClient);
+
+            } else {
+                log.error("Client not found. Order not associated with any client.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
             orderService.assignSequentialIdsToItem(order);
 
-            if (order.getClient() != null) {
-                // Retrieve client based on any of the client details
-                Optional<Client> optionalClient = clientService.findByEmail(order.getClient().getEmail());
-
-                if (!optionalClient.isPresent()) {
-                    optionalClient = clientService.findByName(order.getClient().getName());
-                }
-                if (!optionalClient.isPresent()) {
-                    optionalClient = clientService.findByPhoneNumber(order.getClient().getPhoneNumber());
-                }
-
-                if (optionalClient.isPresent()) {
-                    Client existingClient = optionalClient.get();
-                    order.setClient(existingClient);
-
-                } else {
-                    log.error("Client not found. Order not associated with any client.");
-                    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-                }
-            }
-
             orderService.save(order);
-            if (order.getClient() != null) {
-                Client existingClient = order.getClient();
-                if (existingClient.getOrderNumbers() == null) {
-                    existingClient.setOrderNumbers(new ArrayList<>());
-                }
-                existingClient.getOrderNumbers().add(order.getOrderNumber());
-                clientService.save(existingClient);
+            Client existingClient = order.getClient();
+            if (existingClient.getOrderNumbers() == null) {
+                existingClient.setOrderNumbers(new ArrayList<>());
             }
+            existingClient.getOrderNumbers().add(order.getOrderNumber());
+            clientService.save(existingClient);
             return ResponseEntity.ok(order);
-
         } catch (Exception e) {
             log.error(e.getMessage());
             return ResponseEntity.badRequest().build();
         }
-
     }
 
     @GetMapping("/all")
@@ -105,5 +106,4 @@ public class OrderController {
             return ResponseEntity.notFound().build();
         }
     }
-
 }

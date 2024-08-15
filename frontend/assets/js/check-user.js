@@ -1,13 +1,12 @@
 let query = "";
 function checkClient() {
-
     query = document.querySelector('#search-client').value;
     console.log(query);
-    searchClient();
+    return searchClient();
 }
 
 function searchClient() {
-    fetch(`http://localhost:8080/clients/search/${query}`, {
+    return fetch(`http://localhost:8080/clients/search/${query}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -15,8 +14,7 @@ function searchClient() {
     })
         .then(response => {
             if (response.status === 204) {
-                showMessage(`Nenhum cliente encontrado com o nome: <br><br> ${query}`);
-                console.log('No client found');
+                showMessage(`Nenhum cliente encontrado com a pesquisa: <br><br> ${query}`);
                 return null;
             }
             if (!response.ok) {
@@ -27,10 +25,12 @@ function searchClient() {
         })
         .then(data => {
             if (data) {
-                showMessage(`Cliente encontrado com a pesquisa: <br><br> ${query}`);
+                showMessage(`Cliente encontrado com a pesquisa: <br><br> ${data.name}`);
+                return data;
             }
         })
         .catch(error => {
             console.log('Error:', error.message);
+            return null;
         });
 }
