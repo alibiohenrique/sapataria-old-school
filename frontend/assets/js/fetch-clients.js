@@ -6,10 +6,14 @@ function fetchClients() {
     fetch('http://localhost:8080/clients/all')
         .then(response => response.json())
         .then(data => {
-            clearClients(); // Use 'clearClients' instead of 'cleanClients' for consistency
+            clearClients(); 
             displayClients(data);
         })
-        .catch(error => console.error('Error fetching clients', error));
+        .catch(error => {
+            console.error('Error fetching clients', error);
+            showMessage('Erro ao atualizar clientes!');
+        });
+        
 }
 
 function clearClients() {

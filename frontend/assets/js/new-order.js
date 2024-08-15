@@ -87,14 +87,17 @@ function createOrder() {
   })
     .then(response => {
       if (!response.ok) {
+        showMessage('Erro ao criar pedido! <br><br> Verifique se todos os campos estão preenchidos corretamente!');
         throw new Error('Network response was not ok ' + response.statusText);
       }
       return response.json();
     })
     .then(data => {
+      showMessage('Pedido criado com sucesso!');
       console.log('Order created successfully:', data);
     })
     .catch(error => {
+      showMessage('Erro ao criar pedido! <br><br> Verifique se todos os campos estão preenchidos corretamente!');
       console.error('There was a problem with the fetch operation:', error);
     });
 

@@ -1,4 +1,4 @@
-const options = {year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC'};
+const options = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
 
 $(document).ready(function () {
     fetchOrders();
@@ -10,8 +10,11 @@ function fetchOrders() {
         .then(data => {
             clearOrders();
             displayOrders(data);
+
         })
-        .catch(error => console.error('Error fetching orders:', error));
+        .catch(error => {
+            console.error('Error fetching orders:', error)
+        });
 }
 
 function clearOrders() {
