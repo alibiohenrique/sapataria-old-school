@@ -1364,6 +1364,8 @@ section.buttons .container-fluid {
     font-size: 13px;
 }
 
+/* Orders */
+
 .order {
     margin-top: 0.75rem;
     background-color: #eaebef;
@@ -1376,4 +1378,41 @@ section.buttons .container-fluid {
 
 .section-footer {
     margin-top: 1rem;
+}
+#new-client-link {
+    background-color: #535ba0;
+	color: #fff;
+}
+#new-client-link:hover {
+	color: #535ba0;
+    border: #535ba0 solid 2px;
+    background-color: #fff;
+}
+/* User Message */
+
+.user-message-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    position: absolute;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+}
+
+.user-message {
+    color: #fff;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    opacity: 100%;
+    border-radius: 30px 10px 30px 10px;
+    background-color: #535ba0;
+    height: 250px;
+    width: 300px;
 }
