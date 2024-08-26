@@ -6,7 +6,7 @@ function checkClient() {
 }
 
 function searchClient() {
-    return fetch(`http://localhost:8080/clients/search/${query}`, {
+    return fetch(`http://backend:8080/clients/search/${query}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ function searchClient() {
                 showMessage(`Nenhum cliente encontrado com a pesquisa: <br><br> ${query}`);
                 return null;
             }
-            if (!response.ok) {
+            if (!response.ok) {g
                 showMessage('Erro ao buscar cliente!');
                 throw new Error('An error occurred while fetching the client');
             }

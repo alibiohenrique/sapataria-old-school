@@ -1,0 +1,24 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb+srv://${USER_DB}:${USER_PASSWORD}@cluster0.tn1v8vi.mongodb.net/${DB_NAME}?retryWrites=true&w=majority&appName=Cluster0
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:8081"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

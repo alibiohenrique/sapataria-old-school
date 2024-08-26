@@ -16,14 +16,13 @@ import static org.slf4j.helpers.Reporter.error;
 @RestController
 @RequestMapping("/clients")
 @AllArgsConstructor
-@CrossOrigin(origins = "*")
 @Slf4j
+@CrossOrigin(origins = "*")
 public class ClientController {
 
     private ClientService clientService;
 
     @PostMapping("/create")
-    @CrossOrigin(origins = "http://localhost:5500")
     public ResponseEntity<Client> createClient(@RequestBody Client client) {
         try {
             clientService.save(client);
@@ -44,8 +43,8 @@ public class ClientController {
         }
     }
 
+    @CrossOrigin
     @GetMapping("/search/{query}")
-    @CrossOrigin(origins = "http://localhost:5500")
     public ResponseEntity<Optional<Client>> searchClientByCriteria(@PathVariable String query) {
 
         Optional<Client> client = Optional.empty();
@@ -66,6 +65,7 @@ public class ClientController {
         return client.isPresent() ? ResponseEntity.ok(client) : ResponseEntity.noContent().build();
     }
 
+    @CrossOrigin
     @GetMapping("id/{id}")
     public ResponseEntity<Optional<Client>> getClientById(@PathVariable String id) {
         if (clientService.findById(id).isPresent()) {
@@ -74,7 +74,7 @@ public class ClientController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    @CrossOrigin
     @GetMapping("/email/{email}")
     public ResponseEntity<Optional<Client>> getClientByEmail(@PathVariable String email) {
         if (clientService.findByEmail(email).isPresent()) {
